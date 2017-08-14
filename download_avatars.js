@@ -11,10 +11,15 @@ function getRepoContributors(repoOwner, repoName, cb) {
       "User-Agent": "GitHub Avatar Downloader - Student Project",
     }
   };
-  return request.get(requestURL, cb);
+  request.get(requestURL, cb);
 }
 
 getRepoContributors("jquery", "jquery", function(err, result) {
+  const resultBody = JSON.parse(result.body);
   console.log("Errors:", err);
-  console.log("Result:", result);
+  console.log("Result:", resultBody);
+
+  resultBody.forEach(function(body){
+    console.log(body.avatar_url);
+  });
 });
