@@ -5,7 +5,12 @@ var GITHUB_TOKEN = "01b8152bd4507278db846b201978b498b0e3d42c";
 console.log('Welcome to the GitHub Avatar Downloader!');
 
 function getRepoContributors(repoOwner, repoName, cb) {
-  var requestURL = 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors';
+  var requestURL = {
+    url: 'https://'+ GITHUB_USER + ':' + GITHUB_TOKEN + '@api.github.com/repos/' + repoOwner + '/' + repoName + '/contributors',
+    headers: {
+      "User-Agent": "GitHub Avatar Downloader - Student Project",
+    }
+  };
   return request.get(requestURL, cb);
 }
 
